@@ -11,5 +11,6 @@ class Map
 		Road getRoad(){return completeRoadObject;} // getter for the simulator class 
 		void update(); // called on by simulator to change positions and lights 
 	private:
-		Road completeRoadObject; // contains list of all road items
+		std::vector<Road> listOfRoads;		
+		//Road completeRoadObject; // contains list of all road items
 }; // end class definition 
