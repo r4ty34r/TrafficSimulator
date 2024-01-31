@@ -12,6 +12,7 @@
 
 
 // base class
+
 class Vehicle : public DynamicRoadItem {
 	public: 
 		Vehicle(); // default consturctor
