@@ -2,7 +2,7 @@
 #include "RoadItem.h" 
 
 //base class used to derive all static road items 
-class Sign 
+class Sign : public RoadItem
 {
 	public: 
 		//default constructor can handle everything needed

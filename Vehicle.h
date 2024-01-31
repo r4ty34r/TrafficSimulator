@@ -12,7 +12,8 @@
 
 
 // base class
-class Vehicle : public DynamicRoadItem  {
+
+class Vehicle : public DynamicRoadItem {
 	public: 
 		Vehicle(); // default consturctor
 		void accelerate(float toSpeed);
