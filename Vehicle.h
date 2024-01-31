@@ -1,5 +1,6 @@
 #pragma once // guardrail
 #include <iostream>
+#include "RoadItem.h"
 
 // base class interface
 // 	private: currentSpeed, currentDirection, currentLocation
@@ -11,7 +12,7 @@
 
 
 // base class
-class Vehicle {
+class Vehicle : public DynamicRoadItem  {
 	public: 
 		Vehicle(); // default consturctor
 		void accelerate(float toSpeed);
