@@ -11,6 +11,7 @@ class RoadItem
 	private:
 		int currentLocation[2]; // private array recording an x,y 
 		double mileMarker;
+		std::string name; // to distinguish between stop and yield signs 
 		
 }; // end class definition
 
