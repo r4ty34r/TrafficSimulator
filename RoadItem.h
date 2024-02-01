@@ -7,6 +7,7 @@ class RoadItem
 		RoadItem(){currentLocation[0] = 0; currentLocation[1] = 0;} // default constructor
 		int getPosition(); // returns an array of an x,y 
 		double getMileMarker(){return mileMarker;}
+		std::string getName(){return name;} // to allow manipulation of a specific object
 		
 	private:
 		int currentLocation[2]; // private array recording an x,y 
