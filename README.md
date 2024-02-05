@@ -1,4 +1,4 @@
-# ObjectSoftwareDesign
+# Traffic Simulator for ObjectSoftwareDesign S24
 Spring_2024
 
 A collection of classes to simulate traffic. 
