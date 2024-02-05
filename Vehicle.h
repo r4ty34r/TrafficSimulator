@@ -1,9 +1,9 @@
 #pragma once // guardrail
 #include <iostream>
-#include "RoadItem.h"
+//#include "RoadItem.h" //commented out for HW3
 
 // base class interface
-// 	private: currentSpeed, currentDirection, currentLocation
+// 	private: currentSpeed, currentDirection, currentLocation desiredSpeed
 // 	public: accel(toSpeed), decel(toSpeed), turn(direction, degrees) 
 //
 // 	car: inherits from base class no modification
@@ -13,25 +13,51 @@
 
 // base class
 
-class Vehicle : public DynamicRoadItem {
+
+//REMOVED INHERITANCE FOR HW3 ; VEHICLE SHOULD INHERIT FROM DYNAMIC ROAD ITEM
+class Vehicle {
 	public: 
 		Vehicle(); // default consturctor
-		void accelerate(float toSpeed);
-		void decelerate(float toSpeed);
-		void turn(std::string toDirection, float degrees);	
+		~Vehicle(){std::cout<< "Vehicle destructor executed" << std::endl;} // destructor
+		void updateSpeed(int seconds); // actually modifies the current speed
+
+		// getters/setters
+		double getCurrentSpeed(){return currentSpeed;}
+		void setDesiredSpeed(double mph){desiredSpeed = mph;}
+		void setCurrentSpeed(double speed); // logic in Vehicle.cpp
+
+		// to be implemented differently based on type of vehicle 
+		virtual void accelerate(int secondsDelta){currentSpeed = 0;} 
+		virtual void decelerate(int secondsDelta){currentSpeed = 0;}
+		virtual std::string getType(){return "Vehicle";}
+		//virtual void turn(std::string toDirection, float degrees);	
 	private:
-		float currentSpeed;
 		std::string currentDirection;
 		// note to remove currentLocation to reflect RoadItem class
 		std::string currentLocation;
+		double currentSpeed; // added for hw3
+		double desiredSpeed; // added for hw3
 }; //end base class
 
-class Car : public Vehicle{};
+class Car : public Vehicle{
+	public:
+		~Car(){std::cout << "Car destructor executed" << std::endl;}
+		void accelerate(int secondsDelta);
+		void decelerate(int secondsDelta);
+		std::string getType(){return "Car";}
+		//void turn(int secondsDelta)
+};
 
 class Truck : public Car {
 	public: 
+		Truck(int loadingWeight){loadWeight = loadingWeight; setCurrentSpeed(0.0);}
+		~Truck(){std::cout<<"Truck destructor executed" << std::endl;}
 		void setLoadWeight(float weightToLoad);
+		void accelerate(int secondsDelta);
+		void decelerate(int secondsDelta);
+		std::string getType(){return "Truck";}
+	
 	private:
-		float loadWeight; // total weight carried by truck
+		float loadWeight; // total weight carried in tons
 		std::string trailerColor;
 }; 
