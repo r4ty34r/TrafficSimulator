@@ -37,8 +37,9 @@ int main(){
         {
             //cout << "Vehicle " << j+1 << " updating the " << i+1 << " time\n";
             vehicleslist.at(j)->updateSpeed(1);
-            string s = vehicleslist.at(j)->getType();
-            cout << s << " speed: " << vehicleslist.at(j)->getCurrentSpeed() << endl;
+            //string s = vehicleslist.at(j)->getType();
+            //cout << s << " speed: " << vehicleslist.at(j)->getCurrentSpeed() << endl;
+            vehicleslist.at(j)->print();
         }
         
     }

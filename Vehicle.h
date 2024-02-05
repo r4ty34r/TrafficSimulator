@@ -20,7 +20,7 @@ class Vehicle {
 		Vehicle(); // default consturctor
 		~Vehicle(){std::cout<< "Vehicle destructor executed" << std::endl;} // destructor
 		void updateSpeed(int seconds); // actually modifies the current speed
-
+		virtual void print(){std::cout << "Vehicle speed: " << currentSpeed << std::endl;}
 		// getters/setters
 		double getCurrentSpeed(){return currentSpeed;}
 		void setDesiredSpeed(double mph){desiredSpeed = mph;}
@@ -45,7 +45,8 @@ class Car : public Vehicle{
 		void accelerate(int secondsDelta);
 		void decelerate(int secondsDelta);
 		std::string getType(){return "Car";}
-		//void turn(int secondsDelta)
+		 void print(){std::cout << "Car speed: " << getCurrentSpeed() << std::endl;}
+		 //void turn(int secondsDelta)
 };
 
 class Truck : public Car {
@@ -56,6 +57,7 @@ class Truck : public Car {
 		void accelerate(int secondsDelta);
 		void decelerate(int secondsDelta);
 		std::string getType(){return "Truck";}
+		void print(){std::cout << "Truck speed: " << getCurrentSpeed() << std::endl;}
 	
 	private:
 		float loadWeight; // total weight carried in tons
