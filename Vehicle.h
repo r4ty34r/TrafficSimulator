@@ -14,8 +14,6 @@
 
 // base class
 
-
-//REMOVED INHERITANCE FOR HW3 ; VEHICLE SHOULD INHERIT FROM DYNAMIC ROAD ITEM
 class Vehicle : public  DynamicRoadItem{
 	public: 
 		Vehicle(); // default consturctor
