@@ -15,6 +15,8 @@
 
 
 //REMOVED INHERITANCE FOR HW3 ; VEHICLE SHOULD INHERIT FROM DYNAMIC ROAD ITEM
+
+// removed inheritance because RoadItem class is not complete
 class Vehicle {
 	public: 
 		Vehicle(); // default consturctor
