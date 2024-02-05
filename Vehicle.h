@@ -1,4 +1,5 @@
 #pragma once // guardrail
+#include "RoadItem.h"
 #include <iostream>
 //#include "RoadItem.h" //commented out for HW3
 
@@ -15,9 +16,7 @@
 
 
 //REMOVED INHERITANCE FOR HW3 ; VEHICLE SHOULD INHERIT FROM DYNAMIC ROAD ITEM
-
-// removed inheritance because RoadItem class is not complete
-class Vehicle {
+class Vehicle : public  DynamicRoadItem{
 	public: 
 		Vehicle(); // default consturctor
 		~Vehicle(){std::cout<< "Vehicle destructor executed" << std::endl;} // destructor

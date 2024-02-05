@@ -5,21 +5,21 @@ class RoadItem
 {
 	public:
 		RoadItem(){currentLocation[0] = 0; currentLocation[1] = 0;} // default constructor
-		int getPosition(){return currentLocation;} // returns an array of an x,y 
+		int* getPosition(){return currentLocation;} // returns an array of an x,y 
 		double getMileMarker(){return mileMarker;}
 		std::string getName(){return name;} // to allow manipulation of a specific object
-		void setCurrentRoad(RoadItem currentItem){currentRoadItem = currnetItem;}
-		RoadItem getCurrentRoad(){return currentRoadItem;}
-		RoadItem getPreviousRoadItem{return previousRoadItem;}
-		RoadItem getNextRoadItem(){return nextRoadItem;}
-		void setPreviousRoadItem(RoadItem previousItem){previousRoadItem = previousItem;}
+		void setCurrentRoad(RoadItem* currentItem){currentRoadItem = currentItem;}
+		RoadItem* getCurrentRoad(){return currentRoadItem;}
+		RoadItem* getPreviousRoadItem(){return previousRoadItem;}
+		RoadItem* getNextRoadItem(){return nextRoadItem;}
+		void setPreviousRoadItem(RoadItem* previousItem){previousRoadItem = previousItem;}
 	private:
 		int currentLocation[2]; // private array recording an x,y 
 		double mileMarker;
 		std::string name; // to distinguish between stop and yield signs 
-		RoadItem nextRoadItem;
-		RoadItem previousRoadItem;
-		RoadItem currentRoadItem;
+		RoadItem *nextRoadItem;
+		RoadItem *previousRoadItem;
+		RoadItem *currentRoadItem;
 		
 }; // end class definition
 
