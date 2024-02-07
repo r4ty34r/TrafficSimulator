@@ -2,9 +2,8 @@
 #include<iostream>
 
 
-// class to hold constants
-class Constraints {
-    public:
+// public struct to hold constants
+struct Constraints {
         const double AccRate = 3.5;          // Acceleration rate for cars in m/s
         const double AccRateEmpty = 2.5;     // Acceleration rate for light trucks in m/s
         const double AccRateFull = 1.0;      // Acceleration rate for heavy trucks in m/s
@@ -13,7 +12,7 @@ class Constraints {
         const double DecRateFull = 2.0;      // Braking rate for light trucks in m/s
         const double MpsToMph = 2.237;
 
-}; // end class def 
+}; // end struct def 
 
 //initializing global constraints 
 Constraints* Constants = new Constraints;
