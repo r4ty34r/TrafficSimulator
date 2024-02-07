@@ -1,3 +1,5 @@
+// Driver program to create dynamic objects, store them in a list, and update their speed. 
+
 #include "Vehicle.h"
 #include<iostream>
 #include<vector>
@@ -9,6 +11,7 @@ int main(){
     double truck2speed = 2.24;
 
     cout << "Starting program" << endl;
+    
     //init & set 
     cout << "Initializing Vehicles" << endl;
     Car* car = new Car; 
