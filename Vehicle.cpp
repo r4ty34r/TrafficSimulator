@@ -14,8 +14,10 @@ struct Constraints {
 
 }; // end struct def 
 
-//initializing global constraints 
+//initializing global constraints with dynamic struct
 Constraints* Constants = new Constraints;
+
+
 
 //default constructor 
 Vehicle::Vehicle(){
@@ -26,60 +28,54 @@ Vehicle::Vehicle(){
 }
 
 void Vehicle::setCurrentSpeed(double speed)
-    {
+{
         if(currentSpeed <= speed) // accelerating
         {
-            if (speed > desiredSpeed) 
-            {
-                currentSpeed = desiredSpeed;
-            }
-            else {
-                currentSpeed = speed;
-                }
+                if (speed > desiredSpeed) {currentSpeed = desiredSpeed;} 
+                else {currentSpeed = speed;}
         } else // braking
             {
-                if (speed < desiredSpeed) 
-                {
-                    currentSpeed = desiredSpeed;
-                } else{ 
-                    currentSpeed = speed;
-                }
+                if (speed < desiredSpeed) {currentSpeed = desiredSpeed;} 
+                else{currentSpeed = speed;}
             }
-    }
+} // end setCurrentSpeed
 
-void Vehicle::updateSpeed(int seconds){
+void Vehicle::updateSpeed(int seconds)
+{
+        if (currentSpeed > desiredSpeed) {this->decelerate(seconds);}
+        else if (currentSpeed < desiredSpeed) {this->accelerate(seconds);}
+} // end updateSpeed
 
-     if (currentSpeed > desiredSpeed) {this->decelerate(seconds);}
-            else if (currentSpeed < desiredSpeed) {this->accelerate(seconds);}
-}
-
-
-
-
-void Car::accelerate(int secondsDelta){
+void Car::accelerate(int secondsDelta)
+{
     
-    this->setCurrentSpeed(this->getCurrentSpeed() + Constants->AccRate * secondsDelta * Constants->MpsToMph);
-}
+    this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRate * secondsDelta * Constants->MpsToMph));
+} // end car::accelerate
 
 
 void Car::decelerate(int secondsDelta){
 
-        this->setCurrentSpeed(this->getCurrentSpeed() - Constants->DecRate * secondsDelta * Constants->MpsToMph);
-}
+        this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRate * secondsDelta * Constants->MpsToMph));
+} // end car::decelrate
 
-void Truck::accelerate(int secondsDelta){
-
-            if (loadWeight <= 5)
-                    this->setCurrentSpeed(this->getCurrentSpeed() + Constants->AccRateEmpty * secondsDelta * Constants->MpsToMph);
-            else
-                    this->setCurrentSpeed(this->getCurrentSpeed() + Constants->AccRateFull * secondsDelta * Constants->MpsToMph); 
-}
+void Truck::accelerate(int secondsDelta)
+{
+        if (loadWeight <= 5)
+        {
+                this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRateEmpty * secondsDelta * Constants->MpsToMph));
+        } else
+                {
+                        this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRateFull * secondsDelta * Constants->MpsToMph));
+                } 
+} // end truck::accelerate
 
 void Truck::decelerate(int secondsDelta)
 {
-    if (loadWeight <= 5)
-            this->setCurrentSpeed(    this->getCurrentSpeed() - Constants->DecRateEmpty * secondsDelta * Constants->MpsToMph);
-    
-    else
-            this->setCurrentSpeed(    this->getCurrentSpeed() - Constants->DecRateFull * secondsDelta * Constants->MpsToMph);
-}
+        if (loadWeight <= 5)
+        {
+            this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRateEmpty * secondsDelta * Constants->MpsToMph));
+        } else
+        {
+            this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRateFull * secondsDelta * Constants->MpsToMph));
+        }
+} // end truck::decelerate
