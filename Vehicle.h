@@ -1,7 +1,6 @@
 #pragma once // guardrail
 #include "RoadItem.h"
 #include <iostream>
-//#include "RoadItem.h" //commented out for HW3
 
 // base class interface
 // 	private: currentSpeed, currentDirection, currentLocation desiredSpeed
@@ -44,7 +43,7 @@ class Car : public Vehicle{
 		void accelerate(int secondsDelta);
 		void decelerate(int secondsDelta);
 		std::string getType(){return "Car";}
-		 void print(){std::cout << "Car speed: " << getCurrentSpeed() << std::endl;}
+		void print(){std::cout << "Car speed: " << getCurrentSpeed() << std::endl;}
 		 //void turn(int secondsDelta)
 };
 
