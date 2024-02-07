@@ -47,6 +47,12 @@ int main(){
         
     }
 
+    // Clearing memory 
+    for (int i = 0; i < vehicleslist.size(); i++)
+    {
+        cout << "\nDeleting memory ..." << i+1<< endl;
+        delete vehicleslist.at(i);
+    }
     /*
     List<Vehicle> vehicles = new List<Vehicle>();
             vehicles.Add(car); vehicles.Add(truck1); vehicles.Add(truck2);
