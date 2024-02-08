@@ -27,7 +27,8 @@ class Vehicle : public  DynamicRoadItem{
 		// to be implemented differently based on type of vehicle 
 		virtual void accelerate(int secondsDelta){currentSpeed = 0;} 
 		virtual void decelerate(int secondsDelta){currentSpeed = 0;}
-		virtual std::string getType(){return "Vehicle";}
+		virtual std::string getType(); 
+		//virtual std::string getType(){return "Vehicle";}
 		//virtual void turn(std::string toDirection, float degrees);	
 	private:
 		std::string currentDirection;
