@@ -7,13 +7,9 @@
 using namespace std;
 
 int main(){
-    double car1outputspeed = 7.83;
-    double truck1speed = 5.59;
-    double truck2speed = 2.24;
-
     cout << "Starting program" << endl;
     
-    //init & set 
+    // init & set 
     cout << "Initializing Vehicles" << endl;
     Car* car = new Car; 
     car->setDesiredSpeed(65.0);
@@ -22,24 +18,25 @@ int main(){
     Truck* truck2 = new Truck(8); 
     truck2->setDesiredSpeed(50.0);
 
-    //initializing vector of vehicles 
+    // initializing vector of vehicles 
     vector<Vehicle*> vehicleslist; 
 
     cout << "Adding vehicles to list" << endl;
-    //adding each pointer to list
+    // adding each pointer to list
     vehicleslist.push_back(car);
     vehicleslist.push_back(truck1);
     vehicleslist.push_back(truck2);
 
-    //added for HW4
+    // added for HW4
     ISimOutput * simOutPut = new MetricOutput();
     ISimOutput * simOutput2 = new ImperialOutput();
+    
     // running program loop 11x
 
     cout << "Beginning loop: " << endl;
     for (int i = 0; i < 11; i++)
     {
-        //loop through each vehicle 
+        // loop through vector and call method on each vehicle
         for(int j = 0; j < vehicleslist.size(); j++)
         {
             //cout << "Vehicle " << j+1 << " updating the " << i+1 << " time\n";
@@ -48,9 +45,11 @@ int main(){
             //cout << s << " speed: " << vehicleslist.at(j)->getCurrentSpeed() << endl;
             //vehicleslist.at(j)->print();
             //cout << "\nVehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< vehicleslist.at(j)->getCurrentSpeed();
-            //added for hw4
-            cout << "\n METRIC: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutPut->getSpeed(*(vehicleslist.at(j)))<< std::endl;
-            cout << "\n IMPERIAL: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutput2->getSpeed(*(vehicleslist.at(j)))<< std::endl;
+            
+            // added for hw4
+            // note simOutPut = MetricOutput type and simOutPut2 = ImperialOutPut type
+            cout << "\n METRIC: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutPut->getSpeed(*(vehicleslist.at(j)))<< std::endl; // dereferencing pointer
+            cout << "\n IMPERIAL: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutput2->getSpeed(*(vehicleslist.at(j)))<< std::endl; // dereferencing pointer 
 
         }
     }
@@ -61,20 +60,6 @@ int main(){
         cout << "\nDeleting memory ..." << i+1<< endl;
         delete vehicleslist.at(i);
     }
-    /*
-    List<Vehicle> vehicles = new List<Vehicle>();
-            vehicles.Add(car); vehicles.Add(truck1); vehicles.Add(truck2);
-            for (int i = 0; i < 11; i++)
-            {
-                foreach (Vehicle v in vehicles)
-                {
-                    v.UpdateSpeed(1);
-                    string s = v.GetType().ToString();
-                    Console.WriteLine("{0} speed: {1:F} mph", s, v.GetCurrentSpeed());
-                }
-            }
-
-            */
 
     return 0;
 }
