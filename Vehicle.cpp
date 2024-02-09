@@ -80,20 +80,9 @@ void Truck::decelerate(int secondsDelta)
         }
 } // end truck::decelerate
 
+// returns a dereferenced type specifier for an object created 
 std::string Vehicle::getType()
 {
         std::string s = typeid(*this).name();
-        const std::type_info& ti1 = typeid(*this);
-        std::string x = ti1.name();
-        std::cout<< "\n INSIDE GETTYPE(): "<< x << std::endl;
-        /* current function prints a number right next to type, todo: remove leading digit
-        std::string x = "";
-        //removing initial digit 
-        for(int i = 0; i < s.size(); i++)
-        {
-                x=+(s.at(i));
-        }*/
-        
         return s; 
-
 }
