@@ -1,5 +1,6 @@
 #pragma once 
 #include <iostream> 
+#include <vector>
 #include "RoadItem.h"
 
 //simulator class is used to keep track of, update, and delete items on/in the map
