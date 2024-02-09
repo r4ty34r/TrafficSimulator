@@ -3,7 +3,6 @@
 #include "Vehicle.h"
 
 // Simulator interface 
-// public by default 
 class ISimOutput {
     public:
         virtual ~ISimOutput(){}; // destructor
