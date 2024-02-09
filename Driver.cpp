@@ -1,6 +1,7 @@
 // Driver program to create dynamic objects, store them in a list, and update their speed. 
 
 #include "Vehicle.h"
+#include "Simoutput.h"
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -30,6 +31,9 @@ int main(){
     vehicleslist.push_back(truck1);
     vehicleslist.push_back(truck2);
 
+    //added for HW4
+    ISimOutput * simOutPut = new MetricOutput();
+    ISimOutput * simOutput2 = new ImperialOutput();
     // running program loop 11x
 
     cout << "Beginning loop: " << endl;
@@ -42,9 +46,13 @@ int main(){
             vehicleslist.at(j)->updateSpeed(1);
             //string s = vehicleslist.at(j)->getType();
             //cout << s << " speed: " << vehicleslist.at(j)->getCurrentSpeed() << endl;
-            vehicleslist.at(j)->print();
+            //vehicleslist.at(j)->print();
+            //cout << "\nVehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< vehicleslist.at(j)->getCurrentSpeed();
+            //added for hw4
+            cout << "\n METRIC: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutPut->getSpeed(*(vehicleslist.at(j)))<< std::endl;
+            cout << "\n IMPERIAL: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutput2->getSpeed(*(vehicleslist.at(j)))<< std::endl;
+
         }
-        
     }
 
     // Clearing memory 
