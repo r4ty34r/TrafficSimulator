@@ -13,6 +13,6 @@ class Simulator
 		void addStaticRoadItem(StaticRoadItem itemToAdd);
 
 	private:
-		vector<DynamicRoadItem> roadItems
+		std::vector<DynamicRoadItem> roadItems;
 
 }; // end class definition
