@@ -9,7 +9,7 @@ struct Constraints {
         const double DecRateEmpty = 5.0;     // Braking rate for light trucks in m/s
         const double DecRateFull = 2.0;      // Braking rate for light trucks in m/s
         const double MpsToMph = 2.237;
-	    const double MpsToKph = 3.6;	     // Conversion rate for Meters p/sec to Kilometers p/hr 
+	const double MpsToKph = 3.6;	     // Conversion rate for Meters p/sec to Kilometers p/hr 
 
 }; // end struct def
 
