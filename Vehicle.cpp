@@ -1,26 +1,11 @@
-#include"Vehicle.h"
-#include<iostream>
-
-
-// public struct to hold constants
-struct Constraints {
-        const double AccRate = 3.5;          // Acceleration rate for cars in m/s
-        const double AccRateEmpty = 2.5;     // Acceleration rate for light trucks in m/s
-        const double AccRateFull = 1.0;      // Acceleration rate for heavy trucks in m/s
-        const double DecRate = 7.0;          // Braking rate for cars in m/s
-        const double DecRateEmpty = 5.0;     // Braking rate for light trucks in m/s
-        const double DecRateFull = 2.0;      // Braking rate for light trucks in m/s
-        const double MpsToMph = 2.237;
-
-}; // end struct def 
-
-//initializing global constraints with dynamic struct
-Constraints* Constants = new Constraints;
-
-
+#include "Vehicle.h"
+#include "CONSTRAINTS.h"
+#include <typeinfo>
+#include <iostream>
 
 //default constructor 
 Vehicle::Vehicle(){
+        std::cout << "default car constructor called"<<std::endl;
     currentSpeed = 0.0;
     currentDirection = "x";
     currentLocation ="y";
