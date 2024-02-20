@@ -2,20 +2,42 @@
 
 #include "Vehicle.h"
 #include "Simoutput.h"
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include "GUI.h" // added for HW5
+#include <typeinfo>
 using namespace std;
 
-int main(){
-    cout << "Starting program" << endl;
-    
-    // init & set 
+int main()
+{
+    // prompt user for standard
+    cout << "Enter 'M' for metric or 'I' for Imperial: ";   
+    char uInput; cin >> uInput;
+
+    IGUI* guiObj;
+
+    // instatiates imperial or metric based on uInput variable
+    if(uInput == 'i' || uInput == 'I'){
+        cout << "\n calling imperialGUI allo" << endl;
+        ImperialGUI* gui = new ImperialGUI;
+        guiObj = gui;
+    } else {
+        cout << "\n calling metricGUI allo " << endl;
+        MetricGUI * gui = new MetricGUI;
+        guiObj = gui;
+    }
+
+    //prompt user for speed limit 
+    double limit;
+    cout << "Enter speed limit : "; cin >> limit;        
+
+    // init & set
     cout << "Initializing Vehicles" << endl;
-    Car* car = new Car; 
+    Vehicle* car = new Car; 
     car->setDesiredSpeed(65.0);
-    Truck* truck1 = new Truck(4); 
+    Vehicle* truck1 = new Truck(4); 
     truck1->setDesiredSpeed(55.0);
-    Truck* truck2 = new Truck(8); 
+    Vehicle* truck2 = new Truck(8); 
     truck2->setDesiredSpeed(50.0);
 
     // initializing vector of vehicles 
@@ -27,37 +49,32 @@ int main(){
     vehicleslist.push_back(truck1);
     vehicleslist.push_back(truck2);
 
-    // added for HW4
-    ISimOutput * simOutPut = new MetricOutput();
-    ISimOutput * simOutput2 = new ImperialOutput();
-    
-    // running program loop 11x
-
-    cout << "Beginning loop: " << endl;
+   // added for HW5
+   
+   // setting desired speed for all vehicles
+    for(int i = 0; i < vehicleslist.size(); i++)
+    {
+        //guiObj->SetSpeedLimit(*(vehicleslist.at(i)), limit); // gui SetSpeed = Vehicle setDesiredSpeed
+        vehicleslist.at(i)->setDesiredSpeed(limit);
+    }
+        
     for (int i = 0; i < 11; i++)
     {
         // loop through vector and call method on each vehicle
         for(int j = 0; j < vehicleslist.size(); j++)
         {
-            //cout << "Vehicle " << j+1 << " updating the " << i+1 << " time\n";
             vehicleslist.at(j)->updateSpeed(1);
-            //string s = vehicleslist.at(j)->getType();
-            //cout << s << " speed: " << vehicleslist.at(j)->getCurrentSpeed() << endl;
-            //vehicleslist.at(j)->print();
-            //cout << "\nVehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< vehicleslist.at(j)->getCurrentSpeed();
-            
-            // added for hw4
-            // note simOutPut = MetricOutput type and simOutPut2 = ImperialOutPut type
-            cout << "\n METRIC: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutPut->getSpeed(*(vehicleslist.at(j)))<< std::endl; // dereferencing pointer
-            cout << "\n IMPERIAL: " << "Vehicle type: " << vehicleslist.at(j)->getType()<< " Speed: "<< simOutput2->getSpeed(*(vehicleslist.at(j)))<< std::endl; // dereferencing pointer 
+            cout << vehicleslist.at(j)->getType() << " speed is: " << guiObj->getSpeed(*vehicleslist.at(j)) << endl;
+        } // end vector loop 
+    } // end main loop
 
-        }
-    }
+
+   //END HW5 CODE 
 
     // Clearing memory 
     for (int i = 0; i < vehicleslist.size(); i++)
     {
-        cout << "\nDeleting memory ..." << i+1<< endl;
+        //cout << "\nDeleting memory ..." << i+1<< endl;
         delete vehicleslist.at(i);
     }
 
