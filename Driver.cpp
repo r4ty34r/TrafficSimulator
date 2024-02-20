@@ -1,10 +1,9 @@
 // Driver program to create dynamic objects, store them in a list, and update their speed. 
 
 #include "Vehicle.h"
-#include "Simoutput.h"
+#include "GUI.h" // added for HW5
 #include <iostream>
 #include <vector>
-#include "GUI.h" // added for HW5
 #include <typeinfo>
 using namespace std;
 
@@ -54,8 +53,8 @@ int main()
    // setting desired speed for all vehicles
     for(int i = 0; i < vehicleslist.size(); i++)
     {
-        //guiObj->SetSpeedLimit(*(vehicleslist.at(i)), limit); // gui SetSpeed = Vehicle setDesiredSpeed
-        vehicleslist.at(i)->setDesiredSpeed(limit);
+        guiObj->SetSpeedLimit(*(vehicleslist.at(i)), limit); // gui SetSpeed = Vehicle setDesiredSpeed
+        //vehicleslist.at(i)->setDesiredSpeed(limit);
     }
         
     for (int i = 0; i < 11; i++)
