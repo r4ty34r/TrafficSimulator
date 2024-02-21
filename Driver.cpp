@@ -13,16 +13,16 @@ int main()
     cout << "Enter 'M' for metric or 'I' for Imperial: ";   
     char uInput; cin >> uInput;
 
-    IGUI* guiObj;
+    IGUI* guiObj; // initializing pointer to gui object
 
     // instatiates imperial or metric based on uInput variable
     if(uInput == 'i' || uInput == 'I'){
         cout << "\n calling imperialGUI allo" << endl;
-        ImperialGUI* gui = new ImperialGUI;
+        ImperialGUI* gui = new ImperialGUI; // dynamically allocating a new gui object
         guiObj = gui;
     } else {
         cout << "\n calling metricGUI allo " << endl;
-        MetricGUI * gui = new MetricGUI;
+        MetricGUI * gui = new MetricGUI; // dynamically allocating a new gui object
         guiObj = gui;
     }
 
@@ -57,7 +57,7 @@ int main()
         //vehicleslist.at(i)->setDesiredSpeed(limit);
     }
         
-    for (int i = 0; i < 11; i++)
+    for (int i = 0; i < 11; i++) // main program loop to run 11x
     {
         // loop through vector and call method on each vehicle
         for(int j = 0; j < vehicleslist.size(); j++)
@@ -75,6 +75,8 @@ int main()
     {
         //cout << "\nDeleting memory ..." << i+1<< endl;
         delete vehicleslist.at(i);
+        delete gui;
+        delete guiObj;
     }
 
     return 0;
