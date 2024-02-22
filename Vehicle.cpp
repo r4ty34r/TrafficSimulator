@@ -34,23 +34,23 @@ void Vehicle::updateSpeed(int seconds)
 void Car::accelerate(int secondsDelta)
 {
     
-    this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRate * secondsDelta * Constants->MpsToMph));
+    this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRate * secondsDelta /** Constants->MpsToMph*/)); // removed conversion for HW5
 } // end car::accelerate
 
 
 void Car::decelerate(int secondsDelta){
 
-        this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRate * secondsDelta * Constants->MpsToMph));
+        this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRate * secondsDelta /** Constants->MpsToMph*/)); // removed conversion for HW5
 } // end car::decelrate
 
 void Truck::accelerate(int secondsDelta)
 {
         if (loadWeight <= 5)
         {
-                this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRateEmpty * secondsDelta * Constants->MpsToMph));
+                this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRateEmpty * secondsDelta /** Constants->MpsToMph*/)); // removed conversion for HW5
         } else
                 {
-                        this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRateFull * secondsDelta * Constants->MpsToMph));
+                        this->setCurrentSpeed(this->getCurrentSpeed() + (Constants->AccRateFull * secondsDelta /** Constants->MpsToMph*/)); // removed conversion for HW5
                 } 
 } // end truck::accelerate
 
@@ -58,10 +58,10 @@ void Truck::decelerate(int secondsDelta)
 {
         if (loadWeight <= 5)
         {
-            this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRateEmpty * secondsDelta * Constants->MpsToMph));
+            this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRateEmpty * secondsDelta /** Constants->MpsToMph*/)); // removed conversion for HW5
         } else
         {
-            this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRateFull * secondsDelta * Constants->MpsToMph));
+            this->setCurrentSpeed(this->getCurrentSpeed() - (Constants->DecRateFull * secondsDelta /** Constants->MpsToMph*/)); // removed conversion for HW5
         }
 } // end truck::decelerate
 
