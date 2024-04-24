@@ -17,17 +17,22 @@ class Sign : public RoadItem
 
 //stop and yield are similar but speed limit requires an extra member for how fast 
 
-class SpeedLimitSign : public Sign {
+class SpeedLimitSign : public Sign 
+{
 	public: 
 		SpeedLimitSign(int limitSpeed); // speed param to change posted allowance 
+
 		SpeedLimitSign(){speedLimit = 25.0;}
+
 		double getSpeedLimit(){return speedLimit;}
+
 	private: 
 		double speedLimit;
 };
 
 
-class Intersection : public Sign {
+class Intersection : public Sign 
+{
 
 	public:
 		void addTurn(std::string turnToAdd);

@@ -25,7 +25,7 @@ class MetricGUI : public IGUI {
 class ImperialGUI : public IGUI {
     public:
         ~ImperialGUI(){std::cout <<"ImperialGUI destructor called";}
-        double getSpeed(Vehicle v){return v.getCurrentSpeed() * Constants->MpsToKph;}
+        double getSpeed(Vehicle v){return v.getCurrentSpeed() * Constants->MpsToMph;}
         void SetSpeedLimit(Vehicle v, double s){v.setDesiredSpeed(s/Constants->MpsToMph);}
 
         // add code to accel decel based on car/truck 

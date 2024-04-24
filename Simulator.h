@@ -1,18 +1,37 @@
 #pragma once 
 #include <iostream> 
 #include <vector>
+#include "Conversions.h"
 #include "RoadItem.h"
+class Road;
+class Car;
+class DynamicRoadItem;
+class Object {
 
-//simulator class is used to keep track of, update, and delete items on/in the map
+public:
+	virtual ~Object() = default;
 
-class Simulator
-{
-	public:
-		void update(int seconds);
-		void addDynamicRoadItem(DynamicRoadItem itemToAdd);
-		void addStaticRoadItem(StaticRoadItem itemToAdd);
+};
 
-	private:
-		std::vector<DynamicRoadItem> roadItems;
+class CharMatrix : public Object {
 
-}; // end class definition
+public:
+	std::vector<std::vector<char>> map;
+	CharMatrix();
+};
+
+class ISimulator {
+
+public:
+	virtual void PrintRoad(Road* road, Object* o) = 0;
+	virtual void PrintRoadItem(DynamicRoadItem* roadItem, Object* o) = 0;
+
+};
+
+class Simulator : public ISimulator {
+
+public:
+	void PrintRoad(Road* road, Object* o);
+	void PrintRoadItem(DynamicRoadItem* roadItem, Object* o);
+
+};

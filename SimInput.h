@@ -10,6 +10,14 @@ class ISimInput {
         virtual void SetSpeedLimit(Vehicle v, double speed) = 0;
 };// end ISimInput def
 
+class MetricInput : public ISimInput{
+    public:
+        ~MetricInput(){std::cout << "MetricInput destructor called";}
+        void SetSpeedLimit(Vehicle v, double speed){
+            v.setDesiredSpeed(speed/Constants->MpsToKph);
+        }
+}; // end Metric input def 
+
 class ImperialInput : public ISimInput{
     public:
         ~ImperialInput(){std::cout << "ImperialInput destructor called";}
@@ -19,11 +27,3 @@ class ImperialInput : public ISimInput{
         }
 
 }; // end Imperial input def 
-
-class MetricInput : public ISimInput{
-    public:
-        ~MetricInput(){std::cout << "MetricInput destructor called";}
-        void SetSpeedLimit(Vehicle v, double speed){
-            v.setDesiredSpeed(speed/Constants->MpsToKph);
-        }
-}; // end Metric input def 
